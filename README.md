@@ -77,7 +77,7 @@ limit agressivo; se limitar, o script ainda gera o CSV, só sem notícias.
 
 ## Requisitos
 
-Python 3.10+
+Python 3.12+
 
 ## Instalação
 
