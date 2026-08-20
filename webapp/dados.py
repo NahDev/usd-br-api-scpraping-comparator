@@ -45,6 +45,7 @@ def carregar_dias_impactantes() -> List[Dict[str, Any]]:
     dias: Dict[str, Dict[str, Any]] = {}
     for linha in linhas:
         data = linha["data"]
+        # o CSV tem uma linha por notícia; setdefault reagrupa por dia na primeira ocorrência
         dia = dias.setdefault(
             data,
             {
@@ -63,6 +64,7 @@ def carregar_dias_impactantes() -> List[Dict[str, Any]]:
                     "link": linha["link_noticia"],
                 }
             )
+    # maior variação absoluta primeiro, alta ou queda
     return sorted(dias.values(), key=lambda d: abs(d["variacao_percentual"]), reverse=True)
 
 

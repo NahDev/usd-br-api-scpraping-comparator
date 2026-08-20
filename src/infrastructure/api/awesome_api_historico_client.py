@@ -54,6 +54,7 @@ class AwesomeApiHistoricoClient(RepositorioHistoricoCambio):
         variacoes = []
         for item in dados:
             try:
+                # timestamp Unix -> "YYYY-MM-DD"
                 data_str = datetime.fromtimestamp(int(item["timestamp"]), tz=timezone.utc).strftime("%Y-%m-%d")
                 variacoes.append(
                     VariacaoDiaria(

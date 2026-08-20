@@ -86,6 +86,7 @@ class GdeltNoticiasClient(RepositorioNoticias):
         agrupado: Dict[str, List[Noticia]] = defaultdict(list)
         for artigo in artigos:
             try:
+                # "seendate" vem como "20260819T120020Z" -> "2026-08-19"
                 data_iso = datetime.strptime(artigo["seendate"], "%Y%m%dT%H%M%SZ").strftime("%Y-%m-%d")
                 agrupado[data_iso].append(
                     Noticia(

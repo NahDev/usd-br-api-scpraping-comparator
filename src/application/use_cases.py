@@ -79,6 +79,7 @@ class CorrelacionarNoticiasUseCase:
 
     def executar(self) -> List[DiaImpactante]:
         historico = self._repositorio_historico.obter_historico(self._dias_historico)
+        # ordena por variação absoluta: alta e queda contam igual, só o tamanho do movimento importa
         maiores_variacoes = sorted(historico, key=lambda v: abs(v.variacao_percentual), reverse=True)
         maiores_variacoes = maiores_variacoes[: self._top_n_dias]
 
@@ -101,6 +102,7 @@ class CorrelacionarNoticiasUseCase:
             for variacao in maiores_variacoes
         ]
 
+        # cada dia pode virar várias linhas (uma por notícia) — achata a lista de listas
         linhas = [linha for dia in dias_impactantes for linha in dia.to_csv_rows()]
         salvar_csv_linhas(linhas, CAMPOS_CSV_NOTICIAS, self._caminho_saida)
         logger.info(
