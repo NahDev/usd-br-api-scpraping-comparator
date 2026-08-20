@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Duas Faces do Dólar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+  <script src="{{ url_for('static', filename='js/glow.js') }}"></script>
+  <div id="tt"></div>
+
+  <div class="wrap">
+
+    <nav class="nav">
+      <a href="/" class="active">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 13V9M6 13V3M10 13V6.5M14 13V4"/></svg>
+        Dashboard
+      </a>
+      <a href="/robo">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="10" height="8" rx="2"/><path d="M8 6V3M5.5 2.5h5"/><circle cx="6" cy="10" r=".9" fill="currentColor" stroke="none"/><circle cx="10" cy="10" r=".9" fill="currentColor" stroke="none"/><path d="M1.3 8.5v3M14.7 8.5v3"/></svg>
+        Painel de robôs
+      </a>
+    </nav>
+
+    <header class="top">
+      <div class="eyebrow">Teste Btime · Dev RPA</div>
+      <h1>Duas formas de medir o mesmo dólar</h1>
+      <p>Web scraping e API pública coletando a mesma cotação USD/BRL, lado a lado — e uma
+         camada extra de ciência de dados que cruza os dias de maior variação do câmbio com
+         notícias reais publicadas naquelas datas.</p>
+      <div class="sources">
+        <span class="tag">scraping · melhorcambio.com</span>
+        <span class="tag">API · AwesomeAPI</span>
+        <span class="tag">API · GDELT Project</span>
+      </div>
+    </header>
+
+    <div class="kpis" id="kpis"><div class="loading">carregando indicadores…</div></div>
+
+    <section>
+      <div class="section-head">
+        <h2>Scraping vs. API</h2>
+        <p>A mesma cotação, coletada por duas técnicas diferentes.</p>
+      </div>
+      <div class="card">
+        <div class="table-scroll">
+          <table id="tabela-fontes">
+            <thead>
+              <tr>
+                <th><span class="th-label">Fonte</span></th>
+                <th><span class="th-label">Compra</span></th>
+                <th><span class="th-label">Venda</span></th>
+                <th><span class="th-label">Alta</span></th>
+                <th><span class="th-label">Baixa</span></th>
+                <th><span class="th-label">Variação</span></th>
+                <th><span class="th-label">Coletado em</span></th>
+              </tr>
+            </thead>
+            <tbody id="tabela-fontes-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Dias que mais impactaram o dólar</h2>
+        <p>Maiores variações do período, cruzadas com notícias publicadas na mesma data (GDELT Project).</p>
+      </div>
+      <div class="card">
+        <div class="dia-list" id="rank-list"></div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Servido por Flask · lê os CSVs em <code>data/</code>, gerados pelos scripts de coleta</span>
+      <span>Teste técnico Btime — Dev RPA</span>
+    </footer>
+
+  </div>
+
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

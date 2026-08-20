@@ -1,0 +1,3 @@
+coletado_em,fonte,par_moeda,valor_compra,valor_venda,valor_alta,valor_baixa,variacao_percentual
+2026-08-20 12:04:43,scraping:melhorcambio.com,USD/BRL,5.1900,5.1900,,,
+2026-08-20 12:04:43,api:awesomeapi.com.br,USD/BRL,5.1876,5.1880,5.2011,5.1775,0.17

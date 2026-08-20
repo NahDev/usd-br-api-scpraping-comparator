@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Painel de Robôs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+  <script src="{{ url_for('static', filename='js/glow.js') }}"></script>
+  <div class="wrap">
+
+    <nav class="nav">
+      <a href="/">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 13V9M6 13V3M10 13V6.5M14 13V4"/></svg>
+        Dashboard
+      </a>
+      <a href="/robo" class="active">
+        <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="10" height="8" rx="2"/><path d="M8 6V3M5.5 2.5h5"/><circle cx="6" cy="10" r=".9" fill="currentColor" stroke="none"/><circle cx="10" cy="10" r=".9" fill="currentColor" stroke="none"/><path d="M1.3 8.5v3M14.7 8.5v3"/></svg>
+        Painel de robôs
+      </a>
+    </nav>
+
+    <header class="top">
+      <div class="eyebrow">RPA · execução sob demanda</div>
+      <h1>Painel de robôs</h1>
+      <p>Cada card abaixo é um dos scripts do projeto. "Rodar agora" dispara o script de
+         verdade — scraping real em melhorcambio.com, chamadas reais à AwesomeAPI e ao GDELT
+         Project — em segundo plano, sem travar a página. A ciência de dados (notícias) depende
+         da API do GDELT, que aplica rate limit agressivo por IP: se estiver limitada no
+         momento, o script ainda roda com sucesso, só sem notícias associadas.</p>
+    </header>
+
+    <div class="robo-grid" id="robo-grid">
+      <div class="loading">carregando status dos robôs…</div>
+    </div>
+
+  </div>
+
+  <script src="{{ url_for('static', filename='js/robo.js') }}"></script>
+</body>
+</html>
